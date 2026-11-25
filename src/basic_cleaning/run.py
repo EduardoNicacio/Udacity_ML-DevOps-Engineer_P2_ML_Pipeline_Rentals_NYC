@@ -37,6 +37,17 @@ def go(args):
     df["last_review"] = pd.to_datetime(df["last_review"])
     logger.info("Converted last_review to datetime")
 
+    # Drop listings located outside of New York City. A single stray coordinate
+    # is enough to fail the geographical boundary data check, so the rows are
+    # removed before the artifact is published.
+    rows_before = df.shape[0]
+    idx = df["longitude"].between(-74.25, -73.50) & df["latitude"].between(40.5, 41.2)
+    df = df[idx].copy()
+    logger.info(
+        f"Geographical filter (NYC bounding box): kept {df.shape[0]} of "
+        f"{rows_before} rows ({rows_before - df.shape[0]} removed)"
+    )
+
     # NOTE: missing values are intentionally NOT imputed here. Imputation is
     # handled by the inference pipeline, so the deployed model can also process
     # incomplete records at prediction time.
