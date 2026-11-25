@@ -672,7 +672,9 @@ you have trained your new model on the new data.
 
 ## Submission
 
-- **W&B project:** <https://app.forge.coreweave.com/enicacio-udacity/nyc_airbnb>
+- **W&B project:** <https://forge.coreweave.com/wandb/enicacio-udacity/nyc_airbnb>
+  *Weights & Biases is served by CoreWeave Forge at `forge.coreweave.com/wandb/<entity>/<project>`;
+  this project is public and viewable without signing in.*
 - **Source repository platform:** `GitHub`
 - **Source repository:** <https://github.com/EduardoNicacio/Udacity_ML-DevOps-Engineer_P2_ML_Pipeline_Rentals_NYC>
 
